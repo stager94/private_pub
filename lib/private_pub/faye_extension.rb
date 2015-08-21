@@ -27,6 +27,7 @@ module PrivatePub
 
     # Ensures the secret token is correct before publishing.
     def authenticate_publish(message)
+      binding.pry
       if PrivatePub.config[:secret_token].nil?
         raise Error, "No secret_token config set, ensure private_pub.yml is loaded properly."
       elsif message["ext"]["private_pub_token"] != PrivatePub.config[:secret_token]
