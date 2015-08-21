@@ -34,6 +34,7 @@ module PrivatePub
       else
         message["ext"]["private_pub_token"] = nil
       end
+      binding.pry
     end
   end
 end
