@@ -1,6 +1,6 @@
 module PrivatePub
   require 'pry'
-  
+
   # This class is an extension for the Faye::RackAdapter.
   # It is used inside of PrivatePub.faye_app.
   class FayeExtension
@@ -29,7 +29,6 @@ module PrivatePub
 
     # Ensures the secret token is correct before publishing.
     def authenticate_publish(message)
-      binding.pry
       if PrivatePub.config[:secret_token].nil?
         raise Error, "No secret_token config set, ensure private_pub.yml is loaded properly."
       elsif message["ext"]["private_pub_token"] != PrivatePub.config[:secret_token]
@@ -37,7 +36,6 @@ module PrivatePub
       else
         message["ext"]["private_pub_token"] = nil
       end
-      binding.pry
     end
   end
 end
