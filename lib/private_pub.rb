@@ -40,6 +40,7 @@ module PrivatePub
 
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = url.scheme == "https"
+      binding.pry
       http.start {|h| h.request(form)}
     end
 
